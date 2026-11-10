@@ -494,8 +494,10 @@ Corrigidos durante o QA:
 
 Limitacoes conhecidas (nao bloqueantes):
 
-- PlaceAutocomplete: resultados mockados nao renderizaram no web
-  (verificar restricao da key do Google Places para browser).
+- PlaceAutocomplete: CORRIGIDO — no web, as sugestoes locais respondem
+  direto (o Places Web Service nao aceita chamadas de navegador/CORS) e
+  cidade/pais podem ser digitados manualmente. Producao: avaliar proxy via
+  backend ou Maps JS SDK com key restrita a HTTP referrer.
 - Tooltip contextual usa fallback centralizado no web (sem spotlight).
 - Console: "Maximum update depth exceeded" no detalhe do roteiro.
 - CORS: o dominio web final precisa entrar em `FRONTEND_URL` em producao.
