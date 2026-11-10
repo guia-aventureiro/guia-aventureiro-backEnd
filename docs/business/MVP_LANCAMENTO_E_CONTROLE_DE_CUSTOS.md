@@ -444,7 +444,7 @@ escolhe sozinho). Regra: nenhum codigo importa `expo-secure-store`,
 - Migrar `services/api.ts` e `services/authService.ts` para o wrapper.
 - Validar `tsc --noEmit` sem erros.
 
-### Fase 1 — Desbloquear o core web
+### Fase 1 — Desbloquear o core web (CONCLUIDA)
 
 - Checkout: no web, redirecionar para a URL do Stripe (`Checkout.web.tsx`);
   no app, manter WebView (`Checkout.native.tsx`).
@@ -453,7 +453,7 @@ escolhe sozinho). Regra: nenhum codigo importa `expo-secure-store`,
 - Fallbacks web: `navigator.clipboard`, `navigator.share`, `window.open`.
 - Corrigir `useNativeDriver` em Toast, SplashScreen e Tooltip.
 
-### Fase 2 — Ajustes de backend
+### Fase 2 — Ajustes de backend (CONCLUIDA)
 
 - `SHARE_BASE_URL` como env var (hoje ha dominio Vercel hardcoded em
   `shareController.js`).
@@ -463,12 +463,15 @@ escolhe sozinho). Regra: nenhum codigo importa `expo-secure-store`,
 - CORS: adicionar o dominio web em `FRONTEND_URL`; corrigir split de origens
   no `socketService.js`.
 
-### Fase 3 — Build e deploy web
+### Fase 3 — Build e deploy web (CONCLUIDA — build validado localmente)
 
-- `app.json`: secao web completa (`output: "static"`, nome, description).
+- `app.json`: secao web completa (`output: "single"`, nome, description).
 - `package.json`: script `build:web` (`expo export --platform web`).
 - Deploy estatico no Vercel (landing-page ja tem rewrite SPA).
 - CI: adicionar `mobile/**` nos paths e job `build-web`.
+- Smoke test local: splash → onboarding → login renderizando no navegador.
+- Pendente: configurar projeto no Vercel e adicionar o dominio web ao
+  `FRONTEND_URL` do backend em producao.
 
 ### Fase 4 — QA web
 
