@@ -8,25 +8,29 @@ Este diretório contém documentação histórica do projeto **Guia do Aventurei
 
 ### 🔄 Histórico de Fases
 
-**`PROJECT_ORGANIZATION_PLAN.md`** *(Fase 1 - Concluída)*
+**`PROJECT_ORGANIZATION_PLAN.md`** _(Fase 1 - Concluída)_
+
 - Plano original para a reorganização do projeto
 - Incluía 4 fases de implementação
 - **Status**: Completo, agora historicamente registrado
 - **Relevância**: Baixa - documento de planejamento executado
 
-**`AUTOMATION_IMPROVEMENTS_CHECKLIST.md`** *(Fase 2 - Concluída)*
+**`AUTOMATION_IMPROVEMENTS_CHECKLIST.md`** _(Fase 2 - Concluída)_
+
 - Checklist de melhorias de automação (retry logic, fixtures, CI/CD)
 - 6 melhorias estratégicas implementadas
 - **Status**: Completo, todas as tarefas executadas
 - **Relevância**: Baixa - checklist de project management
 
-**`OTIMIZACOES.md`** *(Outdated)*
+**`OTIMIZACOES.md`** _(Outdated)_
+
 - Informações antigas de otimizações
 - Consertida pelo documento [architecture/OVERVIEW.md](../docs/architecture/OVERVIEW.md)
 - **Status**: Superado
 - **Relevância**: Muito Baixa - obsoleto
 
-**`REORGANIZATION_SUMMARY.md`** *(Referência histórica)*
+**`REORGANIZATION_SUMMARY.md`** _(Referência histórica)_
+
 - Resumo completo da reorganização de 4 fases
 - 37 arquivos criados (~4650 linhas)
 - Documentação detalhada de como o projeto foi reorganizado
@@ -38,8 +42,8 @@ Este diretório contém documentação histórica do projeto **Guia do Aventurei
 ## 📂 Estrutura do Projeto Atual
 
 Para informações atualizadas sobre a estrutura e organização, veja:
+
 - [docs/INDEX.md](../docs/INDEX.md) - Índice central de documentação
-- [docs/architecture/PROJECT_STRUCTURE.md](../docs/architecture/PROJECT_STRUCTURE.md) - Estrutura atual do projeto
 - [README.md](../README.md) - Visão geral do projeto
 
 ---
@@ -47,11 +51,13 @@ Para informações atualizadas sobre a estrutura e organização, veja:
 ## ✅ Quando Usar Este Archive
 
 ✅ **USE este archive para:**
+
 - Entender como o projeto foi reorganizado
 - Referência histórica de decisões passadas
 - Documentação de fases completadas do projeto
 
 ❌ **NÃO use este archive para:**
+
 - Informações atuais sobre como implementar features
 - Guias de deployment (use [docs/deployment/](../docs/deployment/))
 - Informações de orçamento (use [docs/business/ORCAMENTO.md](../docs/business/ORCAMENTO.md))
@@ -69,7 +75,7 @@ A documentação deste diretório foi consolidada porque:
 
 3. **`OTIMIZACOES.md`**: Informações obsoletas, substituídas por documentação mais recente e atual.
 
-4. **`REORGANIZATION_SUMMARY.md`**: Mantido por referência, mas a estrutura atual está documentada em [docs/architecture/PROJECT_STRUCTURE.md](../docs/architecture/PROJECT_STRUCTURE.md).
+4. **`REORGANIZATION_SUMMARY.md`**: Mantido por referência; a documentação ativa está no [docs/INDEX.md](../docs/INDEX.md).
 
 ---
 
@@ -77,14 +83,14 @@ A documentação deste diretório foi consolidada porque:
 
 Alguns arquivos foram reorganizados para melhor localização:
 
-| Arquivo | Antes | Depois | Motivo |
-|---------|-------|--------|--------|
-| DEPLOY_CHECKLIST.md | `/` | [docs/deployment/](../docs/deployment/) | Consolidar docs de deployment |
-| ORCAMENTO.md | `/` | [docs/business/](../docs/business/) | Consolidar docs de business |
-| APP_STORE_DESCRIPTIONS.md | `/` | [docs/deployment/](../docs/deployment/) | Consolidar docs de deployment |
-| IMPLEMENTATION_GUIDE_PRODUCTION_READY.md | `/` | [docs/deployment/](../docs/deployment/) | Consolidar docs de deployment |
-| FIREBASE_README.md | mobile/ | ❌ Removido | Duplicava [docs/api/FIREBASE.md](../docs/api/FIREBASE.md) |
-| IMPROVMENTS_SUMMARY.md | automation/ | ❌ Removido | Documento histórico de melhorias |
+| Arquivo                                  | Antes       | Depois                                  | Motivo                           |
+| ---------------------------------------- | ----------- | --------------------------------------- | -------------------------------- |
+| DEPLOY_CHECKLIST.md                      | `/`         | [docs/deployment/](../docs/deployment/) | Consolidar docs de deployment    |
+| ORCAMENTO.md                             | `/`         | [docs/business/](../docs/business/)     | Consolidar docs de business      |
+| APP_STORE_DESCRIPTIONS.md                | `/`         | [docs/deployment/](../docs/deployment/) | Consolidar docs de deployment    |
+| IMPLEMENTATION_GUIDE_PRODUCTION_READY.md | `/`         | Removido                                | Guia antigo do Stripe nativo     |
+| FIREBASE_README.md                       | mobile/     | ❌ Removido                             | Documento antigo de Firebase     |
+| IMPROVMENTS_SUMMARY.md                   | automation/ | ❌ Removido                             | Documento histórico de melhorias |
 
 ---
 
@@ -94,7 +100,7 @@ Alguns arquivos foram reorganizados para melhor localização:
 2. **Índice central**: [docs/INDEX.md](../docs/INDEX.md)
 3. **Arquitetura**: [docs/architecture/](../docs/architecture/)
 4. **Deployment**: [docs/deployment/](../docs/deployment/)
-5. **API & Integrações**: [docs/api/](../docs/api/)
+5. **API & Integrações**: [API.md](../API.md) e [docs/STRIPE.md](../docs/STRIPE.md)
 6. **Boas Práticas**:
    - Backend: [backend/BACKEND_BEST_PRACTICES.md](../backend/BACKEND_BEST_PRACTICES.md)
    - Mobile: [mobile/MOBILE_BEST_PRACTICES.md](../mobile/MOBILE_BEST_PRACTICES.md)

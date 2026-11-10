@@ -107,9 +107,11 @@ interface ButtonProps {
 
 // ✅ Componentes com memo quando necessário
 export const Button: React.FC<ButtonProps> = React.memo(({ title, onPress }) => {
-  return <TouchableOpacity style={styles.button} onPress={onPress}>
-    <Text style={styles.text}>{title}</Text>
-  </TouchableOpacity>;
+  return (
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+  );
 });
 
 // ✅ StyleSheet com theme
@@ -211,23 +213,28 @@ git push origin feature/minha-feature
 
 ```markdown
 ## Descrição
+
 Breve descrição do que foi feito
 
 ## Tipo de mudança
+
 - [ ] Bug fix
 - [ ] Nova feature
 - [ ] Breaking change
 - [ ] Documentação
 
 ## Como testar
+
 1. Passo 1
 2. Passo 2
 3. Resultado esperado
 
 ## Screenshots (se aplicável)
+
 Adicione prints ou GIFs
 
 ## Checklist
+
 - [ ] Testes passando
 - [ ] Documentação atualizada
 - [ ] Código revisado
@@ -325,7 +332,7 @@ describe('User signup', () => {
 - [Backend Best Practices](backend/BACKEND_BEST_PRACTICES.md)
 - [Mobile Best Practices](mobile/MOBILE_BEST_PRACTICES.md)
 - [Testing Best Practices](automation/TESTING_BEST_PRACTICES.md)
-- [API Documentation](docs/api/API.md)
+- [API Documentation](API.md)
 - [FAQ](docs/guides/FAQ.md)
 
 ---

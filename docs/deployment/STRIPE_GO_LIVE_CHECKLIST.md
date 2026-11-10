@@ -62,11 +62,13 @@ Executar:
 ## 5) Regra de decisão
 
 ### GO ✅
+
 - [ ] Upgrade + cancelamento funcionam ponta a ponta
 - [ ] Webhook chega e é processado
 - [ ] Sem chave/test `price_id` de ambiente errado
 
 ### NO-GO ❌
+
 - [ ] Webhook falhando
 - [ ] Checkout conclui e usuário não vira premium
 - [ ] Redirect com localhost/tunnel expirado
@@ -74,6 +76,6 @@ Executar:
 ---
 
 **Relacionado**
+
 - [Deploy Checklist](./DEPLOY_CHECKLIST.md)
-- [Guia de Implementação Produção](./IMPLEMENTATION_GUIDE_PRODUCTION_READY.md)
-- [Integração Stripe](../api/STRIPE.md)
+- [Integração Stripe](../STRIPE.md)

@@ -753,7 +753,7 @@
 - `README.md`
 - `API.md`
 - `ROADMAP.md`
-- `docs/api/FIREBASE.md` (documentação consolidada)
+- `docs/INDEX.md` (documentação consolidada)
 - `mobile/INTEGRATION_GUIDE.md`
 
 ---
