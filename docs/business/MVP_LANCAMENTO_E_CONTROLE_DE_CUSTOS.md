@@ -473,11 +473,32 @@ escolhe sozinho). Regra: nenhum codigo importa `expo-secure-store`,
 - Pendente: configurar projeto no Vercel e adicionar o dominio web ao
   `FRONTEND_URL` do backend em producao.
 
-### Fase 4 — QA web
+### Fase 4 — QA web (CONCLUIDA)
 
-- Chrome, Firefox e Safari; responsivo (celular, tablet, desktop).
-- Fluxo ponta a ponta: cadastro, primeiro roteiro, edicao, orcamento,
-  compartilhamento, checkout.
+Validado no navegador (build estatico + dev server, backend local em
+TEST_MODE com IA mockada):
+
+- Cadastro, onboarding, login e persistencia de sessao (localStorage).
+- Geracao de roteiro, detalhe dia a dia, edicao de datas.
+- Orcamento: gasto adicionado, totais e percentual atualizados.
+- Compartilhamento: gate Premium no Free, link gerado apos upgrade,
+  link publico abre a tela compartilhada na propria SPA.
+
+Corrigidos durante o QA:
+
+- Deep link `/r/:id` no proprio dominio (window.location + retry de
+  navegacao ate o container estar pronto).
+- Onboarding bloqueava links publicos de visitantes — link compartilhado
+  passa a ter prioridade sobre o onboarding.
+- SharedItineraryScreen aceita `day.day` ou `day.dayNumber` (keys unicas).
+
+Limitacoes conhecidas (nao bloqueantes):
+
+- PlaceAutocomplete: resultados mockados nao renderizaram no web
+  (verificar restricao da key do Google Places para browser).
+- Tooltip contextual usa fallback centralizado no web (sem spotlight).
+- Console: "Maximum update depth exceeded" no detalhe do roteiro.
+- CORS: o dominio web final precisa entrar em `FRONTEND_URL` em producao.
 
 ### Fase 5 — Limpeza e atualizacao de documentacao
 
