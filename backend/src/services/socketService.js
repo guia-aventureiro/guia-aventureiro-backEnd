@@ -13,9 +13,13 @@ const activeConnections = new Map(); // itineraryId -> Set<socketId>
 const initializeSocket = (server) => {
   io = socketIO(server, {
     cors: {
-      origin: process.env.NODE_ENV === 'production'
-        ? process.env.FRONTEND_URL
-        : '*',
+      origin:
+        process.env.NODE_ENV === 'production'
+          ? (process.env.FRONTEND_URL || '')
+              .split(',')
+              .map((url) => url.trim())
+              .filter(Boolean)
+          : '*',
       credentials: true,
     },
     transports: ['websocket', 'polling'],

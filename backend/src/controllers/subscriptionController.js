@@ -370,24 +370,42 @@ exports.createCheckoutSession = async (req, res) => {
     }
 
     // URLs de redirecionamento HTTPS estáveis para Stripe Checkout
-    const baseUrl = process.env.STRIPE_REDIRECT_BASE_URL;
-    if (!baseUrl) {
-      return res.status(500).json({
-        error: 'stripe_not_configured',
-        message: 'STRIPE_REDIRECT_BASE_URL não configurada',
-      });
-    }
+    // client=web (SPA): Stripe retorna direto para o app web
+    const client = req.body?.client === 'web' ? 'web' : 'native';
+    let successUrl;
+    let cancelUrl;
 
-    if (!baseUrl.startsWith('https://')) {
-      return res.status(500).json({
-        error: 'stripe_not_configured',
-        message: 'STRIPE_REDIRECT_BASE_URL deve começar com https://',
-      });
-    }
+    if (client === 'web') {
+      const webAppUrl = (process.env.WEB_APP_URL || '').trim();
+      if (!webAppUrl.startsWith('https://') && !webAppUrl.startsWith('http://localhost')) {
+        return res.status(500).json({
+          error: 'web_app_not_configured',
+          message: 'WEB_APP_URL não configurada para checkout web',
+        });
+      }
+      const normalizedWebUrl = webAppUrl.endsWith('/') ? webAppUrl.slice(0, -1) : webAppUrl;
+      successUrl = `${normalizedWebUrl}/?checkout=success&session_id={CHECKOUT_SESSION_ID}`;
+      cancelUrl = `${normalizedWebUrl}/?checkout=cancel`;
+    } else {
+      const baseUrl = process.env.STRIPE_REDIRECT_BASE_URL;
+      if (!baseUrl) {
+        return res.status(500).json({
+          error: 'stripe_not_configured',
+          message: 'STRIPE_REDIRECT_BASE_URL não configurada',
+        });
+      }
 
-    const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-    const successUrl = `${normalizedBaseUrl}/api/checkout/success?session_id={CHECKOUT_SESSION_ID}`;
-    const cancelUrl = `${normalizedBaseUrl}/api/checkout/cancel`;
+      if (!baseUrl.startsWith('https://')) {
+        return res.status(500).json({
+          error: 'stripe_not_configured',
+          message: 'STRIPE_REDIRECT_BASE_URL deve começar com https://',
+        });
+      }
+
+      const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+      successUrl = `${normalizedBaseUrl}/api/checkout/success?session_id={CHECKOUT_SESSION_ID}`;
+      cancelUrl = `${normalizedBaseUrl}/api/checkout/cancel`;
+    }
 
     // Criar checkout session
     const { sessionId, url } = await stripeService.createCheckoutSession(
@@ -809,8 +827,13 @@ exports.createCustomerPortalSession = async (req, res) => {
       });
     }
 
-    // URL de retorno (mobile/web)
-    const returnUrl = process.env.STRIPE_PORTAL_RETURN_URL || 'guiaaventureiro://profile';
+    // URL de retorno (mobile deep link ou web app)
+    const client = req.body?.client === 'web' ? 'web' : 'native';
+    const webAppUrl = (process.env.WEB_APP_URL || '').trim();
+    const returnUrl =
+      client === 'web' && webAppUrl
+        ? webAppUrl
+        : process.env.STRIPE_PORTAL_RETURN_URL || 'guiaaventureiro://profile';
 
     const { url } = await stripeService.createCustomerPortal(
       subscription.stripeCustomerId,

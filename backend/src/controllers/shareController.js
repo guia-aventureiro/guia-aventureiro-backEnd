@@ -40,9 +40,14 @@ exports.generateShareLink = async (req, res) => {
 
     logger.log('Link de compartilhamento gerado:', itinerary.publicLink);
 
+    // Base configurável: web app ou landing page (env SHARE_BASE_URL)
+    const shareBaseUrl = (
+      process.env.SHARE_BASE_URL || 'https://landing-page-patrickavilas-projects.vercel.app'
+    ).replace(/\/$/, '');
+
     res.status(200).json({
       shareLink: itinerary.publicLink,
-      fullUrl: `https://landing-page-patrickavilas-projects.vercel.app/r/${itinerary.publicLink}`,
+      fullUrl: `${shareBaseUrl}/r/${itinerary.publicLink}`,
     });
   } catch (error) {
     logger.error('Erro ao gerar link:', error);
