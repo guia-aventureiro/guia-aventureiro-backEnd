@@ -207,7 +207,7 @@ const initializeSocket = (server) => {
     // Sair do roteiro
     socket.on('leave_itinerary', (itineraryId) => {
       socket.leave(`itinerary_${itineraryId}`);
-      
+
       const connections = activeConnections.get(itineraryId);
       if (connections) {
         connections.delete(socket.id);
